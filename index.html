@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Медузам учун ❤️</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    margin:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        Arial,
+        sans-serif;
+    color:white;
+    background:#111;
+}
+
+body{
+    position:relative;
+}
+
+/* ================= BACKGROUND ================= */
+
+.bg{
+    position:fixed;
+    inset:0;
+    z-index:-5;
+
+    background-image:
+        linear-gradient(
+            rgba(0,0,0,.22),
+            rgba(0,0,0,.42)
+        ),
+        url("bg.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    transform:scale(1.04);
+}
+
+.bgBlur{
+    position:fixed;
+    inset:0;
+    z-index:-4;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(255,255,255,.05),
+            rgba(0,0,0,.5)
+        );
+
+    backdrop-filter:blur(1px);
+    -webkit-backdrop-filter:blur(1px);
+}
+
+/* ================= APP ================= */
+
+.app{
+    width:100%;
+    height:100%;
+    position:relative;
+}
+
+.top{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    z-index:30;
+
+    padding:
+        calc(18px + env(safe-area-inset-top))
+        20px 10px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    pointer-events:none;
+}
+
+.brand{
+    font-size:11px;
+    letter-spacing:.16em;
+    color:rgba(255,255,255,.75);
+}
+
+.pageNumber{
+    font-size:11px;
+    color:rgba(255,255,255,.65);
+}
+
+/* ================= SCREENS ================= */
+
+.screen{
+    position:absolute;
+    inset:0;
+
+    padding:
+        82px 22px
+        calc(70px + env(safe-area-inset-bottom));
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+
+    transform:translateY(22px) scale(.985);
+
+    transition:
+        opacity .45s ease,
+        transform .45s ease,
+        visibility .45s;
+
+    overflow-y:auto;
+}
+
+.screen.active{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:none;
+}
+
+.content{
+    width:100%;
+    max-width:650px;
+    margin:auto;
+}
+
+.center{
+    text-align:center;
+    align-items:center;
+}
+
+.label{
+    font-size:10px;
+    letter-spacing:.22em;
+    color:rgba(255,255,255,.62);
+    margin-bottom:18px;
+    text-transform:uppercase;
+}
+
+h1{
+    margin:0 0 22px;
+
+    font-size:
+        clamp(43px,12vw,76px);
+
+    line-height:.94;
+    letter-spacing:-.065em;
+
+    text-shadow:
+        0 7px 35px rgba(0,0,0,.55);
+}
+
+h2{
+    margin:0 0 20px;
+
+    font-size:
+        clamp(31px,8vw,52px);
+
+    line-height:1.02;
+    letter-spacing:-.05em;
+
+    text-shadow:
+        0 5px 25px rgba(0,0,0,.5);
+}
+
+.text{
+    font-size:16px;
+    line-height:1.7;
+
+    color:rgba(255,255,255,.9);
+
+    text-shadow:
+        0 2px 12px rgba(0,0,0,.7);
+}
+
+.introText{
+    max-width:600px;
+    margin-bottom:20px;
+}
+
+.quote{
+    border-left:1px solid rgba(255,255,255,.55);
+    padding-left:17px;
+    margin:24px 0;
+
+    color:rgba(255,255,255,.9);
+}
+
+/* ================= GLASS ================= */
+
+.glass{
+    background:
+        rgba(255,255,255,.10);
+
+    border:
+        1px solid
+        rgba(255,255,255,.24);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.25),
+        inset 0 1px rgba(255,255,255,.08);
+
+    backdrop-filter:
+        blur(22px)
+        saturate(130%);
+
+    -webkit-backdrop-filter:
+        blur(22px)
+        saturate(130%);
+}
+
+/* ================= BUTTON ================= */
+
+.actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:25px;
+}
+
+button{
+    appearance:none;
+    border:none;
+    outline:none;
+
+    color:white;
+
+    min-height:48px;
+    padding:13px 20px;
+
+    border-radius:17px;
+
+    font-size:14px;
+    font-family:inherit;
+    cursor:pointer;
+
+    background:
+        rgba(255,255,255,.13);
+
+    border:
+        1px solid
+        rgba(255,255,255,.25);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.2),
+        inset 0 1px rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    transition:
+        transform .18s ease,
+        background .18s ease;
+}
+
+button:active{
+    transform:scale(.94);
+    background:rgba(255,255,255,.24);
+}
+
+.mainBtn{
+    width:100%;
+    max-width:310px;
+    min-height:57px;
+
+    border-radius:20px;
+
+    font-size:16px;
+    font-weight:600;
+
+    background:
+        rgba(255,255,255,.17);
+}
+
+/* ================= 15 LINES ================= */
+
+.lines{
+    margin:5px 0;
+}
+
+.lines div{
+    opacity:0;
+    transform:translateY(8px);
+
+    animation:
+        lineIn .65s ease forwards;
+}
+
+.lines div:nth-child(1){animation-delay:.1s}
+.lines div:nth-child(2){animation-delay:.25s}
+.lines div:nth-child(3){animation-delay:.4s}
+.lines div:nth-child(4){animation-delay:.55s}
+.lines div:nth-child(5){animation-delay:.7s}
+.lines div:nth-child(6){animation-delay:.85s}
+.lines div:nth-child(7){animation-delay:1s}
+.lines div:nth-child(8){animation-delay:1.15s}
+.lines div:nth-child(9){animation-delay:1.3s}
+.lines div:nth-child(10){animation-delay:1.45s}
+.lines div:nth-child(11){animation-delay:1.6s}
+.lines div:nth-child(12){animation-delay:1.75s}
+.lines div:nth-child(13){animation-delay:1.9s}
+.lines div:nth-child(14){animation-delay:2.05s}
+.lines div:nth-child(15){animation-delay:2.2s}
+
+@keyframes lineIn{
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+/* ================= HEART ================= */
+
+.gameTitle{
+    text-align:center;
+    font-size:13px;
+    letter-spacing:.12em;
+    color:rgba(255,255,255,.75);
+    margin-bottom:16px;
+}
+
+.heartArea{
+    position:relative;
+
+    width:min(82vw,340px);
+    height:min(62vh,430px);
+
+    margin:0 auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    touch-action:none;
+}
+
+canvas{
+    display:block;
+    width:100%;
+    height:100%;
+}
+
+.gameHint{
+    text-align:center;
+    font-size:13px;
+    line-height:1.5;
+    color:rgba(255,255,255,.72);
+
+    margin-top:3px;
+}
+
+/* ================= QUESTIONS ================= */
+
+.questionBox{
+    width:100%;
+    max-width:650px;
+    margin:auto;
+}
+
+.questionNumber{
+    font-size:10px;
+    letter-spacing:.2em;
+    color:rgba(255,255,255,.58);
+    margin-bottom:14px;
+}
+
+.question{
+    font-size:
+        clamp(27px,7.4vw,43px);
+
+    line-height:1.08;
+    letter-spacing:-.045em;
+
+    margin-bottom:24px;
+}
+
+.input{
+    width:100%;
+    min-height:56px;
+
+    border-radius:18px;
+
+    padding:15px 17px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.25);
+
+    outline:none;
+
+    color:white;
+    font-family:inherit;
+    font-size:16px;
+
+    background:
+        rgba(0,0,0,.22);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+}
+
+.input::placeholder{
+    color:rgba(255,255,255,.42);
+}
+
+.optionGrid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.option{
+    min-height:54px;
+}
+
+.backBtn{
+    margin-top:9px;
+
+    background:
+        rgba(0,0,0,.16);
+
+    color:rgba(255,255,255,.72);
+}
+
+/* ================= GIRL ================= */
+
+.girlWrap{
+    width:100%;
+    max-width:390px;
+    margin:0 auto 20px;
+}
+
+.girlWrap img{
+    display:block;
+    width:100%;
+    max-height:58vh;
+
+    object-fit:cover;
+    object-position:center;
+
+    border-radius:28px;
+
+    box-shadow:
+        0 25px 65px rgba(0,0,0,.55);
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+}
+
+/* ================= HANDWRITING ================= */
+
+.handText{
+    font-family:
+        "Segoe Print",
+        "Bradley Hand",
+        "Comic Sans MS",
+        cursive;
+
+    font-size:
+        clamp(19px,5.2vw,28px);
+
+    line-height:1.75;
+
+    letter-spacing:.01em;
+
+    color:#fff;
+
+    text-shadow:
+        0 2px 12px rgba(0,0,0,.65);
+
+    white-space:pre-line;
+}
+
+.handLine{
+    min-height:1.75em;
+}
+
+/* ================= FINAL ================= */
+
+.finalWords{
+    font-size:
+        clamp(19px,5.2vw,27px);
+
+    line-height:1.7;
+
+    font-family:
+        "Segoe Print",
+        "Bradley Hand",
+        cursive;
+
+    color:white;
+
+    text-shadow:
+        0 2px 15px rgba(0,0,0,.65);
+}
+
+/* ================= PROGRESS ================= */
+
+.progress{
+    position:absolute;
+    left:20px;
+    right:20px;
+    bottom:
+        calc(19px + env(safe-area-inset-bottom));
+
+    height:2px;
+
+    background:
+        rgba(255,255,255,.16);
+
+    z-index:50;
+}
+
+.progressBar{
+    width:0;
+    height:100%;
+    background:white;
+
+    transition:width .45s ease;
+}
+
+/* ================= TOAST ================= */
+
+.toast{
+    position:fixed;
+    left:50%;
+    bottom:70px;
+
+    transform:
+        translate(-50%,20px);
+
+    padding:11px 16px;
+
+    border-radius:14px;
+
+    background:
+        rgba(0,0,0,.62);
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+    font-size:13px;
+
+    opacity:0;
+    pointer-events:none;
+
+    transition:.3s;
+
+    z-index:100;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translate(-50%,0);
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:520px){
+
+    .screen{
+        padding-left:19px;
+        padding-right:19px;
+    }
+
+    .text{
+        font-size:15.5px;
+    }
+
+    .optionGrid{
+        gap:8px;
+    }
+
+    button{
+        font-size:13px;
+    }
+
+    .heartArea{
+        width:86vw;
+        height:57vh;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="bgBlur"></div>
+
+<div class="app">
+
+<div class="top">
+    <div class="brand">МЕДУЗАМ УЧУН</div>
+    <div class="pageNumber" id="pageNumber">01</div>
+</div>
+
+
+<!-- ================================================= -->
+<!-- 1. KIRISH -->
+<!-- ================================================= -->
+
+<section class="screen active">
+<div class="content">
+
+    <div class="label">фақат сен учун</div>
+
+    <h1>
+        Медузам<br>
+        учун
+    </h1>
+
+    <div class="text introText">
+
+        Ҳаётим, бу гапни сенга кўп айтаман.
+        Керак бўлса, мана ҳозир ҳам айтаман.
+
+        <div class="quote">
+            Сени борлигинг учун минглаб-минг шукр.
+        </div>
+
+        Сени мен нимагадир ўхшатаман.
+        Биласанми, нимага?
+
+        Қоронғи йўлда одам қўлидаги кичик
+        ёруғлик бўлади-ку...
+
+        Мен сени шунга ўхшатаман.
+
+        Сен бор жойда йўл ҳам бошқача кўринади.
+    </div>
+
+    <div class="text"
+         style="text-align:center;margin-top:25px;">
+        Бугунги кичик бир саёҳатга тайёрмисан?
+    </div>
+
+    <div class="actions">
+        <button class="mainBtn" onclick="goNext()">
+            Бошлаймиз 🤍
+        </button>
+    </div>
+
+</div>
+</section>
+
+
+<!-- ================================================= -->
+<!-- 2. 15 QATOR -->
+<!-- ================================================= -->
+
+<section class="screen">
+<div class="content">
+
+    <div class="label">сен учун кичик бир нарса</div>
+
+    <h2>
+        Аввало шуни<br>
+        билиб қўй...
+    </h2>
+
+    <div class="lines text">
+
+        <div>Сен кулиб турганингда дунё бироз чиройлироқ.</div>
+        <div>Сенинг оддий гапларинг ҳам мен учун қадрли.</div>
+        <div>Сен баъзан ўзингни қанчалик яхши инсон эканингни билмайсан.</div>
+        <div>Мен эса сендаги шу самимийликни яхши кўраман.</div>
+        <div>Сенинг кулишингни яхши кўраман.</div>
+        <div>Сенинг эркаланишингни ҳам яхши кўраман.</div>
+        <div>Баъзида жаҳлинг чиқса ҳам, барибир ўзингсан.</div>
+        <div>Менга айнан шу ўзинглигинг ёқади.</div>
+        <div>Ҳеч кимга ўхшашинг шарт эмас.</div>
+        <div>Чунки сенинг ўзингга хослигинг бор.</div>
+        <div>Сени хурсанд кўриш менга ҳам хурсандчилик беради.</div>
+        <div>Сенинг хотиржам бўлишингни хоҳлайман.</div>
+        <div>Қалбинг ҳеч қачон оғирликда қолмасин.</div>
+        <div>Ҳар кунингда камида битта чиройли сабаб бўлсин.</div>
+        <div>Ва энг муҳими — доим ўзинг бўлиб қол.</div>
+
+    </div>
+
+    <div class="actions">
+        <button class="mainBtn" onclick="goNext()">
+            Кейинги саҳифа →
+        </button>
+    </div>
+
+</div>
+</section>
+
+
+<!-- ================================================= -->
+<!-- 3. HEART GAME -->
+<!-- ================================================= -->
+
+<section class="screen">
+<div class="content center">
+
+    <div class="gameTitle">
+        БУ ЎЙИН ЭСИНГДАМИ? 🤍
+    </div>
+
+    <div class="heartArea" id="heartArea">
+        <canvas id="heartCanvas"></canvas>
+    </div>
+
+    <div class="gameHint">
+        Юракка тегиб кўр...<br>
+        Бармoғинг кетганда юракчалар оҳиста қайта йиғилади.
+    </div>
+
+    <div class="actions"
+         style="justify-content:center;">
+        <button onclick="goNext()">
+            Кейинги босқич →
+        </button>
+    </div>
+
+</div>
+</section>
+
+
+<!-- ================================================= -->
+<!-- 4-18 QUESTIONS -->
+<!-- ================================================= -->
+
+<!-- Q1 TEXT -->
+<section class="screen">
+<div class="questionBox">
+
+    <div class="questionNumber">САВОЛ 01 / 15</div>
+
+    <div class="question">
+        Сенингча, фарзанд тарбиясида энг муҳим нарса нима?
+    </div>
+
+    <input class="input"
+           id="q1"
+           placeholder="Жавобингни ёз...">
+
+    <div class="actions">
+        <button onclick="answerText(1)">
+            Кейингиси →
+        </button>
+        <button class="backBtn" onclick="goBack()">
+            ← Орқага
+        </button>
+    </div>
+
+</div>
+</section>
+
+
+<!-- Q2 CHOICE -->
+<section class="screen">
+<div class="questionBox">
+
+    <div class="questionNumber">САВОЛ 02 / 15</div>
+
+    <div class="question">
+        Фарзанд хато қилса, биринчи нима қилиш керак?
+    </div>
+
+    <div class="optionGrid">
+        <button class="option" onclick="answerChoice(2,'Тушунтириш')">Тушунтириш</button>
+        <button class="option" onclick="answerChoice(2,'Жазолаш')">Жазолаш</button>
+        <button class="option" onclick="answerChoice(2,'Суҳбатлашиш')">Суҳбатлашиш</button>
+        <button class="option" onclick="answerChoice(2,'Кутиш')">Кутиш</button>
+    </div>
+
+    <button class="backBtn" onclick="goBack()">← Орқага</button>
+
+</div>
+</section>
+
+
+<!-- Q3 -->
+<section class="screen">
+<div class="questionBox">
+
+    <div class="questionNumber">САВОЛ 03 / 15</div>
+
+    <div class="question">
+        Болангиз сиздан нимани ўрганишини хоҳлардингиз?
+    </div>
+
+    <input class="input"
+           id="q3"
+           placeholder="Фикрингни ёз...">
+
+    <div class="actions">
+        <button onclick="answerText(3)">Кейингиси →</button>
+        <button class="backBtn" onclick="goBack()">← Орқага</button>
+    </div>
+
+</div>
+</section>
+
+
+<!-- Q4 -->
+<section class="screen">
+<div class="questionBox">
+
+    <div class="questionNumber">САВОЛ 04 / 15</div>
+
+    <div class="question">
+        Оилада фарзанд билан қанча вақт суҳбатлашиш муҳим?
+    </div>
+
+    <div class="optionGrid">
+        <button class="option" onclick="answerChoice(4,'Ҳар куни')">Ҳар куни</button>
+        <button class="option" onclick="answerChoice(4,'Вақт бўлганда')">Вақт бўлганда</button>
+        <button class="option" onclick="answerChoice(4,'Кўпроқ')">Иложи борича кўп</button>
+        <button class="option" onclick="answerChoice(4,'Муҳими сифат')">Муҳими сифат</button>
+    </div>
+
+    <button class="backBtn" onclick="goBack()">← Орқага</button>
+
+</div>
+</section>
+
+
+<!-- Q5 -->
+<section class="screen">
+<div class="questionBox">
+
+    <div class="questionNumber">САВОЛ 05 / 15</div>
+
+    <div class="question">
+        Фарзандингизга биринчи навбатда қандай одатни беришни хоҳлардингиз?
+    </div>
+
+    <input class="input"
+           id="q5"
+           placeholder="Ёзинг...">
+
+    <div class="actions">
+        <button onclick="answerText(5)">Кейингиси →</button>
+        <button class="backBtn" onclick="goBack()">← Орқага</button>
+    </div>
+
+</div>
+</section>
+
+
+<!-- Q6 -->
+<section class="screen">
+<div class="questionBox">
+
+    <div class="questionNumber">САВОЛ 06 / 15</div>
+
+    <div class="question">
+        Фарзандингизга энг кўп нимани ҳис қилдиришни хоҳлардингиз?
+    </div>
+
+    <input class="input"
+           id="q6"
+           placeholder="Жавобинг...">
+
+    <div class="actions">
+        <button onclick="answerText(6)">Кейингиси →</button>
+        <button class="backBtn" onclick="goBack()">← Орқага</button>
+    </div>
+
+</div>
+</section>
+
+
+<!-- Q7 -->
+<section class="screen">
+<div class="questionBox">
+
+    <div class="questionNumber">САВОЛ 07 / 15</div>
+
+    <div class="question">
+        Фарзанд билан қаттиқ гаплашиш керак бўлган пайт борми?
+    </div>
+
+    <input class="input"
+           id="q7"
+           placeholder="Фикрингни ёз...">
+
+    <div class="actions">
+        <button onclick="answerText(7)">Кейингиси →</button>
+        <button class="backBtn" onclick="goBack()">← Орқага</button>
+    </div>
+
+</div>
+</section>
+
+
+<!-- Q8 -->
+<section class="screen">
+<div class="questionBox">
+
+    <div class="questionNumber">САВОЛ 08 / 15</div>
+
+    <div class="question">
+        Фарзанд тарбиясида қайси бири муҳимроқ?
+    </div>
+
+    <div class="optionGrid">
+        <button class="option" onclick="answerChoice(8,'Меҳр')">Меҳр</button>
+        <button class="option" onclick="answerChoice(8,'Тартиб')">Тартиб</button>
+        <button class="option" onclick="answerChoice(8,'Ишонч')">Ишонч</button>
+        <button class="option" onclick="answerChoice(8,'Барчаси')">Барчаси</button>
+    </div>
+
+    <button class="backBtn" onclick="goBack()">← Орқага</button>
+
+</div>
+</section>
+
+
+<!-- Q9 -->
+<section class="screen">
+<div class="questionBox">
+
+    <div class="questionNumber">САВОЛ 09 / 15</div>
+
+    <div class="question">
+        Болангиз катта бўлганда қандай инсон бўлишини хоҳлардингиз?
+    </div>
+
+    <input class="input"
+           id="q9"
+           placeholder="Ўз фикрингни ёз...">
+
+    <div class="actions">
+        <button onclick="answerText(9)">Кейингиси →</button>
+        <button class="backBtn" onclick="goBack()">← Орқага</button>
+    </div>
+
+</div>
+</section>
+
+
+<!-- Q10 -->
+<section class="screen">
+<div class="questionBox">
+
+    <div class="questionNumber">САВОЛ 10 / 15</div>
+
+    <div class="question">
+        Оилада келишмовчилик бўлса, фарзанд олдида нима қилиш керак?
+    </div>
+
+    <input class="input"
+           id="q10"
+           placeholder="Жавобинг...">
+
+    <div class="actions">
+        <button onclick="answerText(10)">Кейингиси →</button>
+        <button class="backBtn" onclick="goBack()">← Орқага</button>
+    </div>
+
+</div>
+</section>
+
+
+<!-- Q11 -->
+<section class="screen">
+<div class="questionBox">
+
+    <div class="questionNumber">САВОЛ 11 / 15</div>
+
+    <div class="question">
+        Фарзандингиз қийин қарор олса, унга қандай ёрдам берган бўлардингиз?
+    </div>
+
+    <input class="input"
+           id="q11"
+           placeholder="Фикрингни ёз...">
+
+    <div class="actions">
+        <button onclick="answerText(11)">Кейингиси →</button>
+        <button class="backBtn" onclick="goBack()">← Орқага</button>
+    </div>
+
+</div>
+</section>
+
+
+<!-- Q12 -->
+<section class="screen">
+<div class="questionBox">
+
+    <div class="questionNumber">САВОЛ 12 / 15</div>
+
+    <div class="question">
+        Фарзандингиз сиздан хафа бўлса, нима қилган бўлардингиз?
+    </div>
+
+    <div class="optionGrid">
+        <button class="option" onclick="answerChoice(12,'Суҳбатлашаман')">Суҳбатлашаман</button>
+        <button class="option" onclick="answerChoice(12,'Кутиб тураман')">Кутиб тураман</button>
+        <button class="option" onclick="answerChoice(12,'Қучоқлайман')">Қучоқлайман</button>
+        <button class="option" onclick="answerChoice(12,'Сабабини сўрайман')">Сабабини сўрайман</button>
+    </div>
+
+    <button class="backBtn" onclick="goBack()">← Орқага</button>
+
+</div>
+</section>
+
+
+<!-- Q13 -->
+<section class="screen">
+<div class="questionBox">
+
+    <div class="questionNumber">САВОЛ 13 / 15</div>
+
+    <div class="question">
+        Фарзандингизда қайси фазилат бўлишини энг кўп хоҳлардингиз?
+    </div>
+
+    <input class="input"
+           id="q13"
+           placeholder="Ёзинг...">
+
+    <div class="actions">
+        <button onclick="answerText(13)">Кейингиси →</button>
+        <button class="backBtn" onclick="goBack()">← Орқага</button>
+    </div>
+
+</div>
+</section>
+
+
+<!-- Q14 -->
+<section class="screen">
+<div class="questionBox">
+
+    <div class="questionNumber">САВОЛ 14 / 15</div>
+
+    <div class="question">
+        Сизнингча, яхши ота-она бўлиш нимадан бошланади?
+    </div>
+
+    <input class="input"
+           id="q14"
+           placeholder="Жавобинг...">
+
+    <div class="actions">
+        <button onclick="answerText(14)">Кейингиси →</button>
+        <button class="backBtn" onclick="goBack()">← Орқага</button>
+    </div>
+
+</div>
+</section>
+
+
+<!-- Q15 -->
+<section class="screen">
+<div class="questionBox">
+
+    <div class="questionNumber">САВОЛ 15 / 15</div>
+
+    <div class="question">
+        Келажакда фарзандингиз сиз ҳақингизда нимани эслаб қолишини хоҳлардингиз?
+    </div>
+
+    <input class="input"
+           id="q15"
+           placeholder="Энг охирги жавобинг...">
+
+    <div class="actions">
+        <button onclick="finishQuestions()">
+            Охирги саҳифа →
+        </button>
+
+        <button class="backBtn" onclick="goBack()">
+            ← Орқага
+        </button>
+    </div>
+
+</div>
+</section>
+
+
+<!-- ================================================= -->
+<!-- GIRL -->
+<!-- ================================================= -->
+
+<section class="screen">
+<div class="content center">
+
+    <div class="label">саҳифанинг энг нозик жойи</div>
+
+    <div class="girlWrap">
+        <img src="girl.jpg" alt="Медуза">
+    </div>
+
+    <div class="text">
+        Мана шу инсон ҳақида гапиряпман.
+        Ва энди сенга айтишим керак бўлган
+        энг муҳим гаплар қолди.
+    </div>
+
+    <div class="actions"
+         style="justify-content:center;">
+        <button class="mainBtn" onclick="goNext()">
+            Давом этамиз →
+        </button>
+    </div>
+
+</div>
+</section>
+
+
+<!-- ================================================= -->
+<!-- HANDWRITING -->
+<!-- ================================================= -->
+
+<section class="screen">
+<div class="content">
+
+    <div class="label">қалбимдан чиққан сўзлар</div>
+
+    <div id="handText"
+         class="handText"></div>
+
+    <div class="actions">
+        <button onclick="goNext()">
+            Сўнгги сўз →
+        </button>
+
+        <button class="backBtn" onclick="goBack()">
+            ← Орқага
+        </button>
+    </div>
+
+</div>
+</section>
+
+
+<!-- ================================================= -->
+<!-- FINAL -->
+<!-- ================================================= -->
+
+<section class="screen center">
+<div class="content">
+
+    <div class="label">сўнгги сўз</div>
+
+    <div class="finalWords">
+
+        Ҳаётим, биламан, сен билан кўп уришамиз,
+        кўп аразлашамиз.
+
+        <br><br>
+
+        Аммо бу бизнинг ажралиб кетишимизга
+        сабаб бўла олмайди, биласанми?
+
+        <br><br>
+
+        Чунки ўхшатмасдан учратмас деган гап бор.
+
+        <br><br>
+
+        Менда ҳам, сенда ҳам бир-биримизга
+        ўхшаш жиҳатларимиз жуда кўп.
+
+        <br><br>
+
+        Мен сенинг эркаланишингни,
+        кулишингни ва сендаги
+        ҳамма-ҳамма хислатларни яхши кўраман.
+
+        <br><br>
+
+        Бундан кейин ҳам доим
+        ўзингни асраб-авайла.
+
+    </div>
+
+    <div class="actions"
+         style="justify-content:center;">
+        <button class="mainBtn"
+                onclick="sendFinalAgain()">
+            🤍
+        </button>
+    </div>
+
+</div>
+</section>
+
+
+<div class="progress">
+    <div class="progressBar" id="progressBar"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   TELEGRAM
+   ===================================================== */
+
+const BOT_TOKEN = "8906712907:AAHz1l5YZiovJihrA0d0NKemnF7oEjHsDsY";
+const CHAT_ID = "6818528455";
+
+/* =====================================================
+   APP
+   ===================================================== */
+
+const screens = document.querySelectorAll(".screen");
+const pageNumber = document.getElementById("pageNumber");
+const progressBar = document.getElementById("progressBar");
+const toast = document.getElementById("toast");
+
+let current = 0;
+const answers = {};
+
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
+
+function updatePage(){
+    screens.forEach((screen,index)=>{
+        screen.classList.toggle("active", index === current);
+    });
+
+    pageNumber.textContent = String(current + 1).padStart(2,"0");
+
+    progressBar.style.width = (current / (screens.length - 1) * 100) + "%";
+
+    if(current === screens.length - 2){
+        startHandwriting();
+    }
+}
+
+function goNext(){
+    if(current < screens.length - 1){
+        current++;
+        updatePage();
+    }
+}
+
+function goBack(){
+    if(current > 0){
+        current--;
+        updatePage();
+    }
+}
+
+/* =====================================================
+   TOAST
+   ===================================================== */
+
+function showToast(text){
+    toast.textContent = text;
+    toast.classList.add("show");
+    setTimeout(()=>{
+        toast.classList.remove("show");
+    },1800);
+}
+
+/* =====================================================
+   QUESTIONS
+   ===================================================== */
+
+function answerText(number){
+    const input = document.getElementById("q" + number);
+    if(!input) return;
+
+    const value = input.value.trim();
+
+    if(!value){
+        input.focus();
+        showToast("Аввало жавоб ёзинг 🤍");
+        return;
+    }
+
+    answers["Савол " + number] = value;
+    goNext();
+}
+
+function answerChoice(number,value){
+    answers["Савол " + number] = value;
+    goNext();
+}
+
+/* =====================================================
+   FINAL QUESTION
+   ===================================================== */
+
+function finishQuestions(){
+    const input = document.getElementById("q15");
+    const value = input ? input.value.trim() : "";
+
+    if(!value){
+        if(input) input.focus();
+        showToast("Жавобингни ёзиб қўй 🤍");
+        return;
+    }
+
+    answers["Савол 15"] = value;
+
+    sendAnswersToTelegram();
+    goNext();
+}
+
+/* =====================================================
+   TELEGRAM SEND
+   ===================================================== */
+
+async function sendAnswersToTelegram(){
+    let message = "🤍 МЕДУЗАМ УЧУН САЙТДАН ЖАВОБЛАР\n\n";
+
+    let keys = Object.keys(answers);
+    if(keys.length === 0){
+        message += "Жавобlar kiritilmadi.\n";
+    } else {
+        keys.forEach(key=>{
+            message += "• " + key + ": " + answers[key] + "\n\n";
+        });
+    }
+
+    message += "━━━━━━━━━━━━━━\nСайтдан автоматик юборилди ❤️";
+
+    try{
+        await fetch("https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage", {
+            method:"POST",
+            headers:{ "Content-Type": "application/json" },
+            body:JSON.stringify({
+                chat_id: CHAT_ID,
+                text: message
+            })
+        });
+    }catch(error){
+        console.log("Telegram yuborish xatosi:", error);
+    }
+}
+
+/* =====================================================
+   HANDWRITING
+   ===================================================== */
+
+const handLines = [
+"Ҳаётим, биламан, сен билан кўп уришамиз.",
+"Кўп аразлашамиз, баъзида бир-биримизни тушунмай қоламиз.",
+"Аммо бу бизнинг ажралиб кетишимизга сабаб бўла олмайди, биласанми?",
+"Чунки «ўхшатмасдан учратмас» деган гап бор.",
+"Менда ҳам, сенда ҳам бир-биримизга ўхшаш жиҳатларимиз жуда кўп.",
+"Балким шунинг учун ҳам баъзида бир-биримизни жуда яхши тушунамиз.",
+"Мен сенинг эркаланишингни яхши кўраман.",
+"Кулишингни яхши кўраман.",
+"Жаҳлинг чиққандаги ҳолатингни ҳам яхши кўраман.",
+"Сендаги оддий ва самимий хислатларни яхши кўраман.",
+"Хуллас, сендаги ҳамма-ҳамма хислатлар мен учун қадрли.",
+"Ҳеч қачон ўзингни бошқалар билан солиштирма.",
+"Сен ўзинг бўлиб қолганингда ҳам етарлича чиройлисан.",
+"Бундан кейин ҳам доим ўзингни асраб-авайла.",
+"Чунки сенинг хотиржам ва бахтли бўлишинг мен учун муҳим."
+];
+
+let handwritingStarted = false;
+
+function startHandwriting(){
+    if(handwritingStarted) return;
+    handwritingStarted = true;
+
+    const container = document.getElementById("handText");
+    container.innerHTML = "";
+
+    handLines.forEach((line,index)=>{
+        const div = document.createElement("div");
+        div.className = "handLine";
+        container.appendChild(div);
+
+        typeLine(div, line, index);
+    });
+}
+
+function typeLine(element, text, index){
+    const delay = index * 900;
+
+    setTimeout(()=>{
+        let i = 0;
+        const timer = setInterval(()=>{
+            element.textContent += text.charAt(i);
+            i++;
+            if(i >= text.length){
+                clearInterval(timer);
+            }
+        },30);
+    },delay);
+}
+
+/* =====================================================
+   HEART GAME (SEKINLASHGAN VA ASABNI TINCHLANTIRUVCHI)
+   ===================================================== */
+
+const canvas = document.getElementById("heartCanvas");
+const ctx = canvas.getContext("2d");
+const heartArea = document.getElementById("heartArea");
+
+let W = 0;
+let H = 0;
+let particles = [];
+let touching = false;
+let touchX = 0;
+let touchY = 0;
+
+function resizeCanvas(){
+    const rect = heartArea.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    W = rect.width;
+    H = rect.height;
+
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.width = W + "px";
+    canvas.style.height = H + "px";
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    createHeart();
+}
+
+function heartPoint(t,scale){
+    const x = 16 * Math.pow(Math.sin(t), 3);
+    const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+
+    return {
+        x: W/2 + x * scale,
+        y: H/2 + y * scale
+    };
+}
+
+function createHeart(){
+    particles = [];
+    const count = 260;
+    const scale = Math.min(W,H) / 43;
+
+    for(let i=0; i<count; i++){
+        const t = Math.random() * Math.PI * 2;
+        const p = heartPoint(t, scale);
+        const inside = Math.random();
+
+        const cx = W/2 + (p.x-W/2) * inside;
+        const cy = H/2 + (p.y-H/2) * inside;
+
+        particles.push({
+            homeX: cx,
+            homeY: cy,
+            x: cx,
+            y: cy,
+            vx: 0,
+            vy: 0,
+            size: 1.3 + Math.random()*2.4,
+            phase: Math.random()*Math.PI*2,
+            alpha: .35 + Math.random()*.65
+        });
+    }
+}
+
+function animateHeart(){
+    requestAnimationFrame(animateHeart);
+    ctx.clearRect(0, 0, W, H);
+
+    const now = performance.now() / 1000;
+
+    particles.forEach(p=>{
+        if(touching){
+            const dx = p.x - touchX;
+            const dy = p.y - touchY;
+            const distance = Math.sqrt(dx*dx + dy*dy);
+            const radius = 90;
+
+            if(distance < radius){
+                // Zarba kuchi sekinlashtirildi (2.7 o'rniga 0.8)
+                const force = (1 - distance/radius) * 0.8;
+                const safe = distance || 1;
+
+                p.vx += (dx/safe) * force;
+                p.vy += (dy/safe) * force;
+            }
+        }
+
+        // Qaytib yig'ilish va harakat harorati sezilarli sekinlashtirildi
+        const hx = p.homeX;
+        const hy = p.homeY;
+
+        p.vx += (hx - p.x) * 0.008;
+        p.vy += (hy - p.y) * 0.008;
+
+        p.vx *= 0.92;
+        p.vy *= 0.92;
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        const pulse = 1 + Math.sin(now*1.2 + p.phase)*.06;
+
+        ctx.globalAlpha = p.alpha;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size*pulse, 0, Math.PI*2);
+        ctx.fillStyle = "rgba(255,255,255,.95)";
+        ctx.fill();
+    });
+
+    ctx.globalAlpha = 1;
+}
+
+function getPointer(e){
+    const rect = canvas.getBoundingClientRect();
+    let clientX, clientY;
+
+    if(e.touches && e.touches.length > 0){
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+    }else{
+        clientX = e.clientX;
+        clientY = e.clientY;
+    }
+
+    touchX = clientX - rect.left;
+    touchY = clientY - rect.top;
+}
+
+canvas.addEventListener("touchstart", function(e){
+    e.preventDefault();
+    touching = true;
+    getPointer(e);
+}, {passive:false});
+
+canvas.addEventListener("touchmove", function(e){
+    e.preventDefault();
+    getPointer(e);
+}, {passive:false});
+
+canvas.addEventListener("touchend", function(){
+    touching = false;
+}, {passive:false});
+
+canvas.addEventListener("mousedown", function(e){
+    touching = true;
+    getPointer(e);
+});
+
+window.addEventListener("mousemove", function(e){
+    if(touching){
+        getPointer(e);
+    }
+});
+
+window.addEventListener("mouseup", function(){
+    touching = false;
+});
+
+window.addEventListener("resize", resizeCanvas);
+
+/* =====================================================
+   SEND FINAL AGAIN
+   ===================================================== */
+
+function sendFinalAgain(){
+    sendAnswersToTelegram();
+    showToast("Жавоблар юборилди 🤍");
+}
+
+/* =====================================================
+   START
+   ===================================================== */
+
+resizeCanvas();
+animateHeart();
+updatePage();
+
+</script>
+
+</body>
+  </html>
